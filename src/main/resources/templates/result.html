@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Shorten a link</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+    <h1>Now, click in the short link, or copy and paste in your favorite browser</h1>
+    
+    <form action="#" th:action="@{/generate}" th:object="${formulario}" method="post">
+        <a th:href="@{'/redir/' + ${shortLink}}" >Short Link</a>
+    </form>
+
+	<a href="/">Let's again?</a>
+
+</body>
+</html>

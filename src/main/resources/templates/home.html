@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Shorten a link</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+
+<body>
+    <h1>Paste your link to shorten here, and press Submit button</h1>
+    
+    <form action="#" th:action="@{/generate}" th:object="${formulario}" method="post">
+        
+        <p><textarea th:field="*{realLink}"  rows="10" cols="60"/></p>
+        
+        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
+
+    <h2>For more information about the web aplication: </h2>
+    <a href="/swagger-ui.html">Swagger</a><br />
+    <h2>For monitoring by Prometheus: </h2>
+    <a href="/actuator">Actuator</a>
+</body>
+</html>
