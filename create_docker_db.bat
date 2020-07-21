@@ -1,0 +1,1 @@
+docker run -d -p 3309:3306 --name shortenlinkapidbserverbat -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=shortenlinkapidb -d mysql:8
