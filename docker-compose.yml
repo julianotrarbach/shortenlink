@@ -22,8 +22,10 @@ services:
     networks: # Networks to join (Services on the same network can communicate with each other using their name)
       - backend
       #- frontend
+    links:
+      - "db"
   db:
-    image: mysql
+    image: mysql:8
     container_name: shortenlinkapidbserver
     environment:
       - MYSQL_ROOT_PASSWORD=root
