@@ -34,7 +34,6 @@ The following guides illustrate how to use some features concretely:
 * To access the API documentation, simply go to (http://localhost:8081/swagger-ui.html)
 
 #### Using docker-compose
-* Prepare a envirement with the database and webaplication
-* Doesn't work yet, becase there is a communication problem between application and database
+* Unfortunately my docker-compose is not working properly, it has a communication error between the containers. As I was unable to solve it in time, I created a bat file to create the database in the docker, and a dockerfile to create the application.
 * Make sure the following excerpt looks like this in the application.properties file:
   * spring.datasource.url=jdbc:mysql://db:3306/shortenlinkapi_db?allowPublicKeyRetrieval=true&useSSL=false
