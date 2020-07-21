@@ -1,0 +1,48 @@
+version: '3.5'
+
+# Define services
+services:
+  # Database Service (Mysql)
+  # App backend service
+  app-server:
+    # Configuration for building the docker image for the backend service
+    build:
+      context: ./
+      dockerfile: api.dockerfile
+      network: shortenlink_backend
+    ports:
+      - "8081:8081" # Forward the exposed port 8081 on the container to port 8081 on the host machine
+    restart: on-failure
+    depends_on:
+      - db # This service depends on mysql. Start that first.
+    environment: # Pass environment variables to the service
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/shortenlinkapidb?allowPublicKeyRetrieval=true&useSSL=false
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+    networks: # Networks to join (Services on the same network can communicate with each other using their name)
+      - backend
+      #- frontend
+  db:
+    image: mysql
+    container_name: shortenlinkapidbserver
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=shortenlinkapidb
+    ports:
+      - 3306:3306
+    #expose: 3307
+    restart: always
+    volumes:
+      - db-data:/var/lib/mysql
+    networks:
+      - backend
+
+
+# Volumes
+volumes:
+  db-data:
+
+# Networks to be created to facilitate communication between containers
+networks:
+  backend:
+  #frontend:
